@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * @file ZoopGame.tsx
+ * @file VertoGame.tsx
  * @description Main client-side game component. Handles user interaction, state, and rendering.
  * @author Mutabie Canada Inc.
  */
@@ -11,7 +11,7 @@ import { generatePuzzle, Difficulty, Board, GRID_SIZE, TOTAL_CELLS } from '@/lib
 import { submitScore } from '@/actions/game-actions';
 import GameTimer from './GameTimer';
 
-export default function ZoopGame() {
+export default function VertoGame() {
     // Game State
     const [difficulty, setDifficulty] = useState<Difficulty>('easy');
     const [board, setBoard] = useState<Board>([]);
@@ -166,7 +166,7 @@ export default function ZoopGame() {
                             onClick={() => startNewGame(d)}
                             className={`
                         px-3 py-1 text-sm font-medium rounded-md capitalize transition-colors
-                        ${difficulty === d ? 'bg-zoop-primary text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}
+                        ${difficulty === d ? 'bg-verto-primary text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}
                     `}
                         >
                             {d}
@@ -183,7 +183,7 @@ export default function ZoopGame() {
 
             {/* Game Grid */}
             <div
-                className="grid gap-1 bg-zoop-grid-bg p-2 rounded-xl shadow-inner w-full aspect-square text-md"
+                className="grid gap-1 bg-verto-grid-bg p-2 rounded-xl shadow-inner w-full aspect-square text-md"
                 style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)` }}
             >
                 {Array.from({ length: GRID_SIZE }).map((_, y) =>
@@ -198,17 +198,17 @@ export default function ZoopGame() {
                         let cellClass = "bg-white text-slate-400";
 
                         if (isWon && inPath) {
-                            cellClass = "bg-zoop-success text-white scale-95 rounded-lg shadow-sm";
+                            cellClass = "bg-verto-success text-white scale-95 rounded-lg shadow-sm";
                         } else if (isHead) {
-                            cellClass = "bg-zoop-primary text-white shadow-md z-20 scale-105 rounded-lg ring-2 ring-blue-600/30";
+                            cellClass = "bg-verto-primary text-white shadow-md z-20 scale-105 rounded-lg ring-2 ring-blue-600/30";
                         } else if (inPath) {
-                            cellClass = "bg-blue-50 text-zoop-primary";
+                            cellClass = "bg-blue-50 text-verto-primary";
                         } else if (isFixed) {
                             cellClass = "bg-slate-200/50 text-slate-800 font-bold";
                         }
 
                         // Determine connector color
-                        const connectorColor = isWon ? "bg-zoop-success" : "bg-zoop-primary";
+                        const connectorColor = isWon ? "bg-verto-success" : "bg-verto-primary";
 
                         return (
                             <div

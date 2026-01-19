@@ -2,7 +2,7 @@
 
 /**
  * @file game-actions.ts
- * @description Server-side actions for Zoop game, handling secure score validation.
+ * @description Server-side actions for Verto game, handling secure score validation.
  * @author Mutabie Canada Inc.
  */
 

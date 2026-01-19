@@ -1,6 +1,6 @@
 /**
  * @file game-logic.ts
- * @description Core game logic for the Zoop puzzle, including Hamiltonian path generation and puzzle board creation.
+ * @description Core game logic for the Verto puzzle, including Hamiltonian path generation and puzzle board creation.
  * @author Mutabie Canada Inc.
  */
 

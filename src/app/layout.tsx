@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zoop - Daily Logic Puzzle",
+  title: "Verto - Daily Logic Puzzle",
   description: "A Mutabie Canada Inc. production",
 };
 

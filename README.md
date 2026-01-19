@@ -1,6 +1,6 @@
-# Zoop - Daily Logic Puzzle
+# Verto - Daily Logic Puzzle
 
-Zoop is a production-ready, interactive web puzzle based on Hamiltonian paths. Users must connect numbers sequentially to fill a grid, ensuring every cell is visited exactly once.
+Verto is a production-ready, interactive web puzzle based on Hamiltonian paths. Users must connect numbers sequentially to fill a grid, ensuring every cell is visited exactly once.
 
 Built with **Next.js 16**, **Tailwind CSS 4**, and **Server Components** for maximum performance and security.
 

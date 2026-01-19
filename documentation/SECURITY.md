@@ -1,6 +1,6 @@
 # Security & Production Readiness
 
-This document outlines the security measures and production-hardening steps implemented in the Zoop application.
+This document outlines the security measures and production-hardening steps implemented in the Verto application.
 
 ## 1. Score Validation (Anti-Cheat)
 To prevent client-side score manipulation, all game wins are validated server-side.

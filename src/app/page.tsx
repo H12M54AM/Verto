@@ -1,4 +1,4 @@
-import ZoopGame from "@/components/ZoopGame";
+import VertoGame from "@/components/VertoGame";
 
 export default function Home() {
   return (
@@ -6,14 +6,14 @@ export default function Home() {
       <div className="max-w-4xl w-full flex flex-col items-center">
         <header className="mb-8 text-center space-y-2">
           <h1 className="text-5xl font-black tracking-tight text-slate-900">
-            Zoop
+            Verto
           </h1>
           <p className="text-slate-500 font-medium text-lg">
             The Daily Logic Path
           </p>
         </header>
 
-        <ZoopGame />
+        <VertoGame />
 
         <footer className="mt-12 text-center text-sm text-slate-400 font-medium">
           &copy; {new Date().getFullYear()} Mutabie Canada Inc.
