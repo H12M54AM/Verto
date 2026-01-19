@@ -8,16 +8,15 @@ export default function Home() {
           <h1 className="text-5xl font-black tracking-tight text-slate-900">
             Verto
           </h1>
+          <h1 className="text-2xl font-black tracking-tight text-slate-600">
+            One Path. Every Node. No Mistakes.
+          </h1>
           <p className="text-slate-500 font-medium text-lg">
             The Daily Logic Path
           </p>
         </header>
 
         <VertoGame />
-
-        <footer className="mt-12 text-center text-sm text-slate-400 font-medium">
-          &copy; {new Date().getFullYear()} Mutabie Canada Inc.
-        </footer>
       </div>
     </main>
   );

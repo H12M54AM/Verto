@@ -10,6 +10,7 @@ import React, { useState, useEffect } from 'react';
 import { generatePuzzle, Difficulty, Board, GRID_SIZE, TOTAL_CELLS } from '@/lib/game-logic';
 import { submitScore } from '@/actions/game-actions';
 import GameTimer from './GameTimer';
+import HowToPlayModal from './HowToPlayModal';
 
 export default function VertoGame() {
     // Game State
@@ -277,6 +278,8 @@ export default function VertoGame() {
                     </div>
                 )}
             </div>
+
+            <HowToPlayModal />
         </div>
     );
 }

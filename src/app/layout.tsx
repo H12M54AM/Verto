@@ -13,9 +13,50 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Verto - Daily Logic Puzzle",
-  description: "A Mutabie Canada Inc. production",
+  title: 'Verto | Daily Hamiltonian Path Logic Puzzle',
+  description: 'Solve the daily Verto challenge. Connect nodes sequentially to complete a Hamiltonian path. A minimalist, high-performance logic game by Mutabie Canada Inc.',
+  keywords: [
+    "Verto",
+    "Hamiltonian path",
+    "logic puzzle",
+    "grid puzzle",
+    "one-line puzzle",
+    "brain game",
+    "daily puzzle",
+    "minimalist game",
+    "Mutabie Canada Inc.",
+    "daily logic game",
+    "Next.js puzzle"
+  ],
+  authors: [{ name: 'Mutabie Canada Inc.' }],
+  openGraph: {
+    title: 'Verto - One Path. Every Node.',
+    description: 'Can you fill the grid? Play the daily Verto logic puzzle.',
+    url: 'https://verto.mutabie.ca',
+    siteName: 'Verto Puzzle',
+    locale: 'en_CA',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Verto Daily Puzzle',
+    description: 'The ultimate Hamiltonian path challenge.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
+
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function RootLayout({
   children,
@@ -25,9 +66,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
