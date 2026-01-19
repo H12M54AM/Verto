@@ -18,8 +18,8 @@ export default function Footer() {
 
                 <div className="flex gap-6">
                     <a href="https://mutabie.ca" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors">
-                    </a>
                         Company
+                    </a>
                     <a href="https://mutabie.ca/contact" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors">
                         Contact
                     </a>
