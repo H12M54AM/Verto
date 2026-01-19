@@ -18,6 +18,17 @@ Built with **Next.js 16**, **Tailwind CSS 4**, and **Server Components** for max
 
 This application was architected and developed with the assistance of advanced AI agents provided by Mutabie Canada Inc. The game logic, security implementation, and aesthetic design follow strict industry standards.
 
+```typescript
+/**
+ * Verto - Daily Logic Puzzle
+ * Copyright (C) 2026 Mutabie Canada Inc.
+ * * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ */
+```
+
 ## Setup
 
 1.  **Install**: `npm install`

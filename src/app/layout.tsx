@@ -1,3 +1,12 @@
+/**
+ * Verto - Daily Logic Puzzle
+ * Copyright (C) 2026 Mutabie Canada Inc.
+ * * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ */
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

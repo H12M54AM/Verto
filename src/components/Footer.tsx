@@ -1,3 +1,11 @@
+/**
+ * Verto - Daily Logic Puzzle
+ * Copyright (C) 2026 Mutabie Canada Inc.
+ * * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ */
 export default function Footer() {
     return (
         <footer className="w-full bg-slate-50 border-t border-slate-200 mt-auto">
@@ -10,8 +18,8 @@ export default function Footer() {
 
                 <div className="flex gap-6">
                     <a href="https://mutabie.ca" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors">
-                        Company
                     </a>
+                        Company
                     <a href="https://mutabie.ca/contact" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors">
                         Contact
                     </a>
