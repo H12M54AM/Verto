@@ -129,6 +129,35 @@ export default function VertoGame() {
         return () => window.removeEventListener('pointerup', handlePointerUp);
     }, []);
 
+    // Mobile Drag Support: Handle touchmove globally when dragging
+    useEffect(() => {
+        const handleTouchMove = (e: TouchEvent) => {
+            if (!isDragging) return;
+            // Prevent scrolling ONLY when we are successfully dragging/interacting or on the grid
+            // But usually we want to prevent default if we are in "drag mode"
+            e.preventDefault();
+
+            const touch = e.touches[0];
+            const target = document.elementFromPoint(touch.clientX, touch.clientY);
+            const cell = target?.closest('[data-cell="true"]');
+
+            if (cell) {
+                const x = parseInt(cell.getAttribute('data-x') || '-1');
+                const y = parseInt(cell.getAttribute('data-y') || '-1');
+                if (x !== -1 && y !== -1) {
+                    tryMove(x, y);
+                }
+            }
+        };
+
+        if (isDragging) {
+            window.addEventListener('touchmove', handleTouchMove, { passive: false });
+        }
+        return () => {
+            window.removeEventListener('touchmove', handleTouchMove);
+        };
+    }, [isDragging, userPath]); // Re-bind when path updates to ensure tryMove has latest state
+
     const getCellDisplay = (x: number, y: number) => {
         const pathNode = userPath.find(p => p.x === x && p.y === y);
         if (pathNode) return pathNode.value;
@@ -165,7 +194,7 @@ export default function VertoGame() {
     };
 
     return (
-        <div className="flex flex-col items-center gap-6 p-4 w-full max-w-md select-none touch-none">
+        <div className="flex flex-col items-center gap-6 p-4 w-full max-w-md select-none">
             {/* Difficulty Controls */}
             <div className="flex gap-4 items-center w-full justify-between">
                 <div className="flex bg-white rounded-lg p-1 shadow-sm border border-slate-200">
@@ -192,7 +221,7 @@ export default function VertoGame() {
 
             {/* Game Grid */}
             <div
-                className="grid gap-1 bg-verto-grid-bg p-2 rounded-xl shadow-inner w-full aspect-square text-md"
+                className="grid gap-1 bg-verto-grid-bg p-2 rounded-xl shadow-inner w-full aspect-square text-md touch-none"
                 style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)` }}
             >
                 {Array.from({ length: GRID_SIZE }).map((_, y) =>
@@ -222,6 +251,9 @@ export default function VertoGame() {
                         return (
                             <div
                                 key={`${x}-${y}`}
+                                data-cell="true"
+                                data-x={x}
+                                data-y={y}
                                 onPointerDown={(e) => handlePointerDown(x, y, e)}
                                 onPointerEnter={() => handlePointerEnter(x, y)}
                                 className={`
@@ -234,25 +266,27 @@ export default function VertoGame() {
                                 {inPath && !isWon && (
                                     <>
                                         {connectors.includes('top') && (
-                                            <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1/2 ${connectorColor} z-0`} />
+                                            <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-1/2 ${connectorColor} z-0`} />
                                         )}
                                         {connectors.includes('bottom') && (
-                                            <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1/2 ${connectorColor} z-0`} />
+                                            <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-1/2 ${connectorColor} z-0`} />
                                         )}
                                         {connectors.includes('left') && (
-                                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-1/2 h-1.5 ${connectorColor} z-0`} />
+                                            <div className={`absolute top-1/2 left-0 -translate-y-1/2 w-1/2 h-2.5 ${connectorColor} z-0`} />
                                         )}
                                         {connectors.includes('right') && (
-                                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-1.5 ${connectorColor} z-0`} />
+                                            <div className={`absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-2.5 ${connectorColor} z-0`} />
                                         )}
-                                        {/* Smoother Corner Joints */}
+                                        {/* Corner Joint / Under-Bead Filler */}
                                         {connectors.length > 0 && (
-                                            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full ${connectorColor} z-0`} />
+                                            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full ${connectorColor} z-0`} />
                                         )}
                                     </>
                                 )}
 
-                                <span className="z-10 relative">{val}</span>
+                                <span className={`z-10 relative ${inPath && !isHead && !isWon ? 'flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white shadow-sm' : ''}`}>
+                                    {val}
+                                </span>
                             </div>
                         );
                     })
